@@ -242,6 +242,9 @@ app.get('/getChat', authToken, getMsg);
 
 // update student without other name
 app.put('/addOtherName', updateStudentWithoutOtherName);
+app.get('/', (req, res) => {
+  res.status(200).send('API is working ✅');
+});
 
 connection({ app }); // ✅ this initializes MongoDB
 
