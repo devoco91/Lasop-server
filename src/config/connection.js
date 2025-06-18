@@ -25,9 +25,12 @@
 const mongoose = require("mongoose");
 
 const connection = () => {
-  if (!process.env.MONGO_DB) throw new Error("MONGO_DB is not set");
-  mongoose
-    .connect(process.env.MONGO_DB, { strictQuery: true })
+  if (!process.env.MONGO_DB) throw new Error("❌ MONGO_DB not set in .env");
+
+  // Set mongoose options if needed globally
+  mongoose.set('strictQuery', true); // optional, depending on Mongoose version
+
+  mongoose.connect(process.env.MONGO_DB)
     .then(() => console.log("✅ MongoDB connected"))
     .catch((err) => {
       console.error("❌ DB connection error:", err.message);
