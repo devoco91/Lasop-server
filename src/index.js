@@ -246,6 +246,6 @@ app.get('/', (req, res) => {
   res.status(200).send('API is working ✅');
 });
 
-connection({ app }); // ✅ this initializes MongoDB
+connection(); // ✅ this initializes MongoDB
 
 module.exports = app; // 

@@ -21,19 +21,18 @@
 
 // src/config/connection.js
 // src/config/connection.js
-require('dotenv').config();
-const mongoose = require('mongoose');
+// src/config/connection.js
+const mongoose = require("mongoose");
 
-const connection = async ({ app }) => {
-  const dbURL = process.env.MONGO_DB;
-
-  try {
-    mongoose.set("strictQuery", true);
-    await mongoose.connect(dbURL, { autoIndex: true });
-    console.log('✅ Connected to database');
-  } catch (err) {
-    console.error('❌ Database connection error:', err.message);
-  }
+const connection = () => {
+  if (!process.env.MONGO_DB) throw new Error("MONGO_DB is not set");
+  mongoose
+    .connect(process.env.MONGO_DB, { strictQuery: true })
+    .then(() => console.log("✅ MongoDB connected"))
+    .catch((err) => {
+      console.error("❌ DB connection error:", err.message);
+      process.exit(1);
+    });
 };
 
 module.exports = connection;

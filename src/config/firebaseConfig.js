@@ -12,25 +12,14 @@
 // const storage = getStorage(app);
 // module.exports = { storage };
 
+const { initializeApp, cert } = require("firebase-admin/app");
+const { getStorage } = require("firebase-admin/storage");
 
-// config/firebaseConfig.js
-const { initializeApp, cert } = require('firebase-admin/app');
-const { getStorage } = require('firebase-admin/storage');
-const fs = require('fs');
-const path = require('path');
-require('dotenv').config();
-
-const keyPath = process.env.FIREBASE_KEY_PATH || './lasop-firebase.json';
-
-if (!fs.existsSync(keyPath)) {
-  throw new Error(`❌ Firebase service account file not found at ${keyPath}`);
-}
-
-const serviceAccount = require(path.resolve(keyPath));
+const serviceAccount = JSON.parse(process.env.FIREBASE_CREDENTIALS);
 
 const app = initializeApp({
   credential: cert(serviceAccount),
-  storageBucket: 'lasop-test.appspot.com',
+  storageBucket: "lasop-test.appspot.com",
 });
 
 const storage = getStorage(app);
