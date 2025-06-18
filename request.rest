@@ -200,6 +200,9 @@ Content-Type: application/json
 ###
 PUT http://localhost:5000/assignCohort/6701573b00e916a43d064d8a
 Content-Type: application/json
+###
+PUT http://localhost:5000/assignCohort/6701573b00e916a43d064d8a
+Content-Type: application/json
 
 {
     "course": "66cd6e330d14292ee2136144",
