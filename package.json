@@ -2,10 +2,12 @@
   "name": "lasopnext-server",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-    "dev": "nodemon src/index.js",
-    "start": "node src/index.js"
-  },
+ "scripts": {
+  "build": "echo \"No build needed\"",
+  "dev": "nodemon src/index.js",
+  "start": "node src/index.js"
+},
+
   "author": "",
   "license": "ISC",
   "description": "",
